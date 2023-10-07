@@ -23,10 +23,14 @@ Shorten My Links
 
 
 This is the plugin for [Logseq](https://logseq.com) and it shorts your links :)
-Well, it is better to say it shorts your *references*, not all links. References to Logseq pages of course. And it shorts only *hierarchical* references. And... only *redundant* hierarchical references: which **duplicates** the page name. Why? To reduce visual efforts while viewing the page.
+
+Well, it is better to say it shorts your **references**, not all links. References to Logseq pages of course. And it shorts only **hierarchical** references. And... only **redundant** hierarchical references: which **duplicates** the page name.
+
+Why? To <u>reduce visual efforts</u> while viewing the page.
 
 Let's see the demo:
-TODO DEMO
+
+<img width="400px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d11827e0-8708-4198-9157-d1f61baba79c"/>
 
 ## If you ❤️ what I'm doing — consider to support my work
 <p align="left">

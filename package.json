@@ -1,0 +1,48 @@
+{
+    "name": "logseq13-shorten-my-links",
+    "version": "1.0.0",
+    "description": "Shorts redundant hierarchical references to reduce visual efforts 👁️",
+    "keywords": [
+        "links",
+        "references",
+        "abbreviation",
+        "namespaces",
+        "hierarchies"
+    ],
+    "author": "stdword",
+    "repository": "https://github.com/stdword/logseq13-shorten-my-links.git",
+    "license": "MIT",
+    "logseq": {
+        "id": "logseq13-shorten-my-links",
+        "title": "Shorten My Links",
+        "icon": "./icon.png",
+        "main": "./dist/index.html"
+    },
+    "scripts": {
+        "preinstall": "npx only-allow pnpm",
+        "clean": "rm -r ./dist/* || true",
+        "dev": "vite",
+        "build": "tsc && vite build --mode=dev",
+        "prod": "tsc && npm run clean && vite build"
+    },
+    "dependencies": {
+        "@logseq/libs": "^0.0.15"
+    },
+    "devDependencies": {
+        "@semantic-release/changelog": "^6.0.3",
+        "@semantic-release/exec": "^6.0.3",
+        "@semantic-release/git": "^10.0.1",
+        "@types/node": "^20.8.3",
+        "conventional-changelog-conventionalcommits": "^7.0.2",
+        "cz-conventional-changelog": "^3.3.0",
+        "semantic-release": "^22.0.5",
+        "typescript": "^5.2.2",
+        "vite": "^4.4.11",
+        "vite-plugin-logseq": "^1.1.2"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    }
+}

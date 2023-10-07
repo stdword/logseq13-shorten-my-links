@@ -30,7 +30,12 @@ Why? To <u>reduce visual efforts</u> while viewing the page.
 
 Let's see the demo:
 
-<img width="400px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d11827e0-8708-4198-9157-d1f61baba79c"/>
+<img width="350px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/a855f45b-f6a7-4866-a465-e191fb773b5d"/>
+
+And the more practical one:
+
+<img width="650px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/0c5c11a6-8a8f-4d1d-9c47-1a1da3e8c3e6"/>
+
 
 ## If you ❤️ what I'm doing — consider to support my work
 <p align="left">
@@ -49,14 +54,19 @@ Let's see the demo:
 - There is no settings or any setup steps: the plugin is completely automatic — just start making references
 
 ### Manual way (in case of any troubles with recommended way)
-- Enable «Developer mode» in «...» → Settings → Advanced
-- Download the <u>latest</u> plugin release in a raw .zip archive from [here](https://github.com/stdword/logseq13-shorten-my-links/releases)
+1. *In Logseq*: Enable «Developer mode» in «...» → Settings → Advanced
+2. Download the <u>latest</u> plugin release in a raw .zip archive from [here](https://github.com/stdword/logseq13-shorten-my-links/releases)
+   
+   <img width="250px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d0e48456-a1e3-4367-8e63-d143c6ada030"/>
+4. Unzip it
+5. *In Logseq*: Go to the «...» → Plugins, click «Load unpacked plugin» and point to the unzipped plugin folder
 
-  <img width="250px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d0e48456-a1e3-4367-8e63-d143c6ada030"/>
-- Unzip it
-- Go to the «...» → Plugins, click «Load unpacked plugin» and point to the unzipped plugin
-- ⚠️ The important point here is: every new plugin release should be updated manually
+   <img width="600px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/4b97b0f7-0364-423a-bfe5-8566863e0294"/>
+6. ⚠️ The important point here is: every new plugin release should be updated manually
 
+## Integrated with plugins:
+- [Awesome Links](https://github.com/yoyurec/logseq-awesome-links)
+- [Page-tags and Hierarchy](https://github.com/YU000jp/logseq-page-tags-and-hierarchy)
 
 ## Credits
 - [Logseq Namespace Abbreviator script](https://github.com/Bad3r/logseq-scripts/blob/main/LogseqNamespaceAbbreviator.js) by Bad3r

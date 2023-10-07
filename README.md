@@ -50,7 +50,10 @@ Let's see the demo:
 
 ### Manual way (in case of any troubles with recommended way)
 - Enable «Developer mode» in «...» → Settings → Advanced
-- Download the <u>latest</u> plugin [release](https://github.com/stdword/logseq13-shorten-my-links/releases) in a raw .zip archive from here and unzip it
+- Download the <u>latest</u> plugin release in a raw .zip archive from [here](https://github.com/stdword/logseq13-shorten-my-links/releases)
+
+  <img width="250px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d0e48456-a1e3-4367-8e63-d143c6ada030"/>
+- Unzip it
 - Go to the «...» → Plugins, click «Load unpacked plugin» and point to the unzipped plugin
 - ⚠️ The important point here is: every new plugin release should be updated manually
 

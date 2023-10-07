@@ -9,6 +9,8 @@
     "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
+    "allowImportingTsExtensions": true,                  /* https://github.com/microsoft/TypeScript/issues/53316 */
+
     /* Projects */
     // "incremental": true,                              /* Enable incremental compilation */
     // "composite": true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */

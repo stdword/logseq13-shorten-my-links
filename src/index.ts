@@ -1,4 +1,5 @@
 import '@logseq/libs'
+import { info, debug, referencesShortenerService } from './logic.ts'
 
 
 const main = () => {
@@ -7,6 +8,15 @@ const main = () => {
         'info',
         {timeout: 5000},
     )
+    info('loaded')
+
+    const service = referencesShortenerService()
+
+    setTimeout(() => service.start(), 1000)
+
+    logseq.beforeunload(async () => {
+        service.stop()
+    })
 }
 
 

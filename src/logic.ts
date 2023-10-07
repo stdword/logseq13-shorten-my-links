@@ -1,86 +1,115 @@
-function linkAbbreviator(boundSelectors) {
+import { logseq as packageInfo } from '../package.json'
+
+
+export function info(...values: any[]) {
+    console.info(`#${packageInfo.id}: `, ...values)
+}
+
+
+export function debug(...values: any[]) {
+    return;  // disable debug messages
+
+    console.debug(`#${packageInfo.id}: `, ...values)
+}
+
+
+function changeText(ref: HTMLElement, opts: {toOrig: boolean}) {
+    const { toOrig } = opts
+
+    let text = ''
+    if (toOrig)
+        text = ref.dataset.origText ?? ''
+    else
+        text = ref.dataset.abbreviatedText ?? ''
+
+    if (!text)
+        return
+
+    const isTag = ref.classList.contains('tag')
+    const textNode = getTextNode(ref)
+    if (textNode)
+        textNode.textContent = (isTag ? '#' : '') + text
+}
+
+
+function getTextNode(ref: HTMLElement): ChildNode | undefined {
+    let textNode: ChildNode | undefined
+    ref.childNodes.forEach((node) => {
+        if (node.nodeType === document.TEXT_NODE)
+            textNode = node
+    })
+    return textNode
+}
+
+
+function findCommonPrefix(text: string, title: string): [string?, string?] {
+    const parts = text.split('/')
+    for (let i = 1; i < parts.length; i++) {
+        const prefix = parts.slice(0, -i).join('/')
+        if (prefix === title)
+            return [ prefix, parts.slice(-i).join('/') ]
+    }
+    return [ undefined, undefined ]
+}
+
+
+function findContainerTitleForRef(
+    namespacedRef: HTMLElement,
+    titleSelectors: string[][],
+): string | undefined {
+    for (const [bubbleSelector, titleSelector, hierarchySelector] of titleSelectors) {
+        const bubbleNode = namespacedRef.closest(bubbleSelector)
+        if (!bubbleNode) {
+            debug('skip — wrong bubble', {bubbleSelector})
+            continue
+        }
+
+        debug({bubbleSelector, bubbleNode})
+
+        const titleNode: HTMLElement | null = bubbleNode?.querySelector(titleSelector)
+        if (!titleNode) {
+            debug('skip — missing title', {titleSelector})
+            continue
+        }
+        if (titleNode === namespacedRef) {
+            debug('skip — same as ref')
+            continue
+        }
+
+        debug('found title', {titleSelector, titleNode})
+
+        if (titleNode.dataset.origText)
+            return titleNode.dataset.origText
+
+        const title = getTextNode(titleNode)?.textContent
+        if (!title)
+            return undefined
+
+        let prefix = ''
+        if (hierarchySelector) {
+            top!.document.querySelectorAll(hierarchySelector).forEach((node) => {
+                const text = getTextNode(node as HTMLElement)?.textContent ?? ''
+                if (text)
+                    prefix += text + '/'
+            })
+        }
+
+        return prefix + title
+    }
+    return undefined
+}
+
+
+function createReferencesObserver(boundSelectors) {
     function onMouseAction(event: Event) {
         const ref = (event.target as Node).parentElement
         if (!ref)
             return
 
-        let text = ''
         if (event.type === 'mouseenter')
-            text = ref.dataset.origText ?? ''
+            changeText(ref, {toOrig: true})
         else if (event.type === 'mouseleave')
-            text = ref.dataset.abbreviatedText ?? ''
-
-        if (text) {
-            const isTag = ref.classList.contains('tag')
-            const textNode = getTextNode(ref)
-            if (textNode)
-                textNode.textContent = (isTag ? '#' : '') + text
-        }
-    }
-
-    function getTextNode(ref: HTMLElement): ChildNode | undefined {
-        let textNode: ChildNode | undefined
-        ref.childNodes.forEach((node) => {
-            if (node.nodeType === document.TEXT_NODE)
-                textNode = node
-        })
-        return textNode
-    }
-
-    function findContainerTitleForRef(
-        namespacedRef: HTMLElement,
-        titleSelectors: string[][],
-    ): string | undefined {
-        for (const [bubbleSelector, titleSelector, hierarchySelector] of titleSelectors) {
-            const bubbleNode = namespacedRef.closest(bubbleSelector)
-            if (!bubbleNode) {
-                console.debug('shortlr: skip — wrong bubble', {bubbleSelector})
-                continue
-            }
-
-            console.debug('shortlr:', {bubbleSelector, bubbleNode})
-
-            const titleNode: HTMLElement | null = bubbleNode?.querySelector(titleSelector)
-            if (!titleNode) {
-                console.debug('shortlr: skip — missing title', {titleSelector})
-                continue
-            }
-            if (titleNode === namespacedRef) {
-                console.debug('shortlr: skip — same as ref')
-                continue
-            }
-
-            console.debug('shortlr: found title', {titleSelector, titleNode})
-
-            if (titleNode.dataset.origText)
-                return titleNode.dataset.origText
-
-            const title = getTextNode(titleNode)?.textContent
-            if (!title)
-                return undefined
-
-            let prefix = ''
-            if (hierarchySelector) {
-                document.querySelectorAll(hierarchySelector).forEach((node) => {
-                    const text = getTextNode(node as HTMLElement)?.textContent ?? ''
-                    if (text)
-                        prefix += text + '/'
-                })
-            }
-
-            return prefix + title
-        }
-        return undefined
-    }
-
-    function findCommonPrefix(text: string, title: string): [string?, string?] {
-        const parts = text.split('/')
-        for (let i = 1; i < parts.length; i++) {
-            const prefix = parts.slice(0, -i).join('/')
-            if (prefix === title)
-                return [ prefix, parts.slice(-i).join('/') ]
-        }
-        return [ undefined, undefined ]
+            changeText(ref, {toOrig: false})
     }
 
     function main(node: HTMLElement, boundInfo: Array<[string, string[][]]>) {
@@ -107,28 +136,29 @@ function linkAbbreviator(boundSelectors) {
                     if (namespacedRef.dataset.ref.toLowerCase() !== origText.toLowerCase())
                         continue
 
-                console.debug('Ref:', {namespacedRef, origText})
+                debug('Ref:', {namespacedRef, origText})
 
                 const title = findContainerTitleForRef(namespacedRef, titleSelectors)
                 // skipping refs without corresponding title
                 if (!title)
                     continue
 
-                console.debug('shortlr:', {title})
+                debug({title})
 
                 const [ prefix, abbreviatedText ] = findCommonPrefix(origText, title)
                 // skipping completely different refs
                 if (!abbreviatedText)
                     continue
 
-                console.debug('shortlr:', {prefix, abbreviatedText})
+                debug({prefix, abbreviatedText})
 
                 namespacedRef.dataset.origText = origText
                 namespacedRef.dataset.abbreviatedText = abbreviatedText
                 textNode.textContent = isTag ? '#' + abbreviatedText : abbreviatedText
 
-                var anchor = document.createElement('span')
+                var anchor = top!.document.createElement('span')
                 anchor.innerText = '↳ '
+                anchor.classList.add(anchorClass)
                 anchor.onmouseenter = onMouseAction
                 anchor.onmouseleave = onMouseAction
 
@@ -141,7 +171,7 @@ function linkAbbreviator(boundSelectors) {
         }
     }
 
-    const observer = new MutationObserver((mutationList) => {
+    const observerCallback = (mutationList) => {
         for (const mutation of mutationList) {
             for (const anyNode of mutation.addedNodes) {
                 const node = anyNode as HTMLElement
@@ -151,7 +181,7 @@ function linkAbbreviator(boundSelectors) {
                 if (node.classList.contains('awLi-icon') || node.classList.contains('awLi-favicon'))
                     continue
 
-                console.debug('Check:', {node})
+                debug('Check:', {node})
 
                 let boundInfo = null
                 for (const boundSelector of Object.keys(boundSelectors)) {
@@ -165,19 +195,17 @@ function linkAbbreviator(boundSelectors) {
                 if (!boundInfo)
                     continue
 
-                console.debug('Select:', {node, boundInfo})
+                debug('Select:', {node, boundInfo})
                 main(node, boundInfo)
             }
         }
-    })
+    }
 
-    const container = document.querySelector('#app-container')!
-    observer.observe(container, {
-        subtree: true,
-        childList: true,
-    })
- }
+    return new MutationObserver(observerCallback)
+}
 
+
+const anchorClass = 'shml-anchor'
 const refsSelectors = ['a.page-ref[data-ref*="/"]', 'a.tag[data-ref*="/"]']
 const refsInBreadcrumbsSelectors = ['.breadcrumb span.inline-wrap > span.page-reference']
 
@@ -231,11 +259,48 @@ const boundSelectors = {
             ['div.sidebar-item', 'div.page-title > span.text-ellipsis'],
             ['div.sidebar-item', 'div.breadcrumb a.page-ref'],
         ]],
-        [refsInBreadcrumbsSelectors, [
+        [prefixSelectors('', refsInBreadcrumbsSelectors), [
             ['div.sidebar-item', 'div.page-title > span.text-ellipsis'],
             ['div.sidebar-item', 'div.breadcrumb a.page-ref'],
         ]],
     ],
 }
 
-// linkAbbreviator(boundSelectors)
+
+function resetReferences() {
+    top!.document.querySelectorAll('.' + anchorClass).forEach((anchor) => {
+        const ref = anchor.parentElement!
+        ref.removeChild(anchor)
+        if (ref.dataset!.origText) {
+            changeText(ref, {toOrig: true})
+            delete ref.dataset.origText
+        }
+        if (ref.dataset!.abbreviatedText)
+            delete ref.dataset.abbreviatedText
+    })
+}
+
+
+export function referencesShortenerService() {
+    const observer = createReferencesObserver(boundSelectors)
+    const api = {
+        start: () => {
+            const container = top!.document.querySelector('#app-container')!
+            if (!container) {
+                setTimeout(() => api.start(), 500)
+                return
+            }
+
+            observer.observe(
+                container, {
+                subtree: true,
+                childList: true,
+            })
+        },
+        stop: () => {
+            observer.disconnect()
+            resetReferences()
+        },
+    }
+    return api
+}

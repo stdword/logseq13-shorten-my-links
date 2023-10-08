@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/stdword/logseq13-shorten-my-links/compare/v1.0.0...v1.1.0) (2023-10-08)
+
+
+### Features
+
+* make abbreviation case insensitive ([ffa815a](https://github.com/stdword/logseq13-shorten-my-links/commit/ffa815aa4f8a2bb5a809f0f9d388cbae98af4360))
+
 # 1.0.0 (2023-10-07)
 
 

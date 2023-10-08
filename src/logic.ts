@@ -43,10 +43,11 @@ function getTextNode(ref: HTMLElement): ChildNode | undefined {
 
 
 function findCommonPrefix(text: string, title: string): [string?, string?] {
+    title = title.toLowerCase()
     const parts = text.split('/')
     for (let i = 1; i < parts.length; i++) {
         const prefix = parts.slice(0, -i).join('/')
-        if (prefix === title)
+        if (prefix.toLowerCase() === title)
             return [ prefix, parts.slice(-i).join('/') ]
     }
     return [ undefined, undefined ]

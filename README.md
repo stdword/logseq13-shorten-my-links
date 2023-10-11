@@ -32,10 +32,14 @@ Let's see the demo:
 
 <img width="350px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/a855f45b-f6a7-4866-a465-e191fb773b5d"/>
 
+These references have the **same prefix as the *current* page title**, so it has been truncated.
+
 And the more practical one:
 
 <img width="650px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/0c5c11a6-8a8f-4d1d-9c47-1a1da3e8c3e6"/>
 
+These references have the **same prefix as the *embedded* page title**, so it has been truncated.
+Embedded page header truncated in comparison with current page title.
 
 ## If you ❤️ what I'm doing — consider to support my work
 <p align="left">

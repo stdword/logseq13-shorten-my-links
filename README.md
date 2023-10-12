@@ -22,7 +22,7 @@ Shorten My Links
 </div>
 
 
-# DOESN'T WORK RIGHT NOW, BUT FIX ALREADY COMING
+# IT DOESN'T WORK RIGHT NOW (in Marketplace): use the [manual way](https://github.com/stdword/logseq13-shorten-my-links/edit/main/README.md#manual-way-in-case-of-any-troubles-with-recommended-way) or way for a fix
 
 This is the plugin for [Logseq](https://logseq.com) and it shorts your links :)
 

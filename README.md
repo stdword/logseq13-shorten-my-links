@@ -22,6 +22,8 @@ Shorten My Links
 </div>
 
 
+# DOESN'T WORK RIGHT NOW, BUT FIX ALREADY COMING
+
 This is the plugin for [Logseq](https://logseq.com) and it shorts your links :)
 
 Well, it is better to say it shorts your **references**, not all links. References to Logseq pages of course. And it shorts only **hierarchical** references. And... only **redundant** hierarchical references: which **duplicates** the page name.

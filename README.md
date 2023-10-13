@@ -67,6 +67,22 @@ Embedded page header truncated in comparison with current page title.
    <img width="600px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/4b97b0f7-0364-423a-bfe5-8566863e0294"/>
 6. ⚠️ The important point here is: every new plugin release should be updated manually
 
+## FAQ
+### Plugin doesn't work. How to fix? Reinstall the plugin manually:
+1. In Logseq: Open the plugins page (press `t p`)
+2. In Logseq: Open plugin **text** settings
+
+   <img width="400px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/5503c3aa-d197-435d-bb18-a5f5c26e2ff8"/>
+
+3. In text editor: Change disabled state from *«false»* to *«true»* and save
+
+   <img width="400px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/cd0bf6af-ccde-48ab-8bd8-cbcc02dda2f3"/>
+
+4. Restart Logseq
+5. In Logseq: Open plugins page again (`t p`)
+6. Uninstall the plugin
+7. Install the plugin again from Marketplace
+
 ## Integrated with plugins:
 - [Awesome Links](https://github.com/yoyurec/logseq-awesome-links)
 - [Page-tags and Hierarchy](https://github.com/YU000jp/logseq-page-tags-and-hierarchy)

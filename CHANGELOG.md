@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/stdword/logseq13-shorten-my-links/compare/v1.1.0...v1.1.1) (2023-10-13)
+
+
+### Bug Fixes
+
+* plugin doesn't respond to enabling/disabling/uninstalling + add reinstall instructions ([e05e5df](https://github.com/stdword/logseq13-shorten-my-links/commit/e05e5df3ab076db35826837251a726d370ebc350))
+
 # [1.1.0](https://github.com/stdword/logseq13-shorten-my-links/compare/v1.0.0...v1.1.0) (2023-10-08)
 
 

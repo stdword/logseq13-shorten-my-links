@@ -21,9 +21,6 @@ Shorten My Links
 
 </div>
 
-
-# IT DOESN'T WORK RIGHT NOW (in Marketplace): use the [manual way](https://github.com/stdword/logseq13-shorten-my-links#manual-way-in-case-of-any-troubles-with-recommended-way) or wait for a fix
-
 This is the plugin for [Logseq](https://logseq.com) and it shorts your links :)
 
 Well, it is better to say it shorts your **references**, not all links. References to Logseq pages of course. And it shorts only **hierarchical** references. And... only **redundant** hierarchical references: which **duplicates** the page name.

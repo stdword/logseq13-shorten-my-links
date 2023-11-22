@@ -12,6 +12,12 @@ export function p(strings: any, ...values: any[]): string {
     return `#${packageInfo.id}:${space}${raw}`
 }
 
+export function debug(...values: any[]) {
+    return;  // disable debug messages
+
+    console.debug(p``, ...values)
+}
+
 /**
  * Sleep for specified milliseconds
  **/
@@ -160,13 +166,22 @@ function adjustIndexForLength(i, len) {
     return i
 }
 
-export function setEditingCursorSelection(start: number, end: number) {
+function _getEditingTextArea(): HTMLTextAreaElement | null {
     const editorElement = top!.document.getElementsByClassName('editor-wrapper')[0] as HTMLDivElement
     if (!editorElement)
-        return false
+        return null
+
     const textAreaElement = top!.document.getElementById(
         editorElement.id.replace(/^editor-/, '')
     ) as HTMLTextAreaElement
+    if (!textAreaElement)
+        return null
+
+    return textAreaElement
+}
+
+export function setEditingCursorSelection(start: number, end: number) {
+    const textAreaElement = _getEditingTextArea()
     if (!textAreaElement)
         return false
 
@@ -177,4 +192,8 @@ export function setEditingCursorSelection(start: number, end: number) {
     textAreaElement.selectionStart = start
     textAreaElement.selectionEnd = end
     return true
+}
+
+export const privateExports = {
+    _getEditingTextArea,
 }

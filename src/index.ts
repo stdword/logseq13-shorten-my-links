@@ -1,10 +1,12 @@
 import '@logseq/libs'
-import { info, debug, referencesShortenerService } from './logic.ts'
-import { insertContent } from './utils.ts'
+import { BlockEntity } from '@logseq/libs/dist/LSPlugin.user'
+
+import { referencesShortenerService } from './logic.ts'
+import { insertContent, p } from './utils.ts'
 
 
 const main = () => {
-    info('loaded')
+    console.log(p`loaded`)
 
     const service = referencesShortenerService()
     setTimeout(() => service.start(), 1000)

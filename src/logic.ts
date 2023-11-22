@@ -1,16 +1,5 @@
 import { logseq as packageInfo } from '../package.json'
-
-
-export function info(...values: any[]) {
-    console.info(`#${packageInfo.id}: `, ...values)
-}
-
-
-export function debug(...values: any[]) {
-    return;  // disable debug messages
-
-    console.debug(`#${packageInfo.id}: `, ...values)
-}
+import { privateExports, debug } from './utils';
 
 
 function changeText(ref: HTMLElement, opts: {toOrig: boolean}) {
@@ -56,7 +45,7 @@ function findCommonPrefix(text: string, title: string): [string?, string?] {
 
 function findContainerTitleForRef(
     namespacedRef: HTMLElement,
-    titleSelectors: string[][],
+    titleSelectors: TitleSelectors,
 ): string | undefined {
     for (const [bubbleSelector, titleSelector, hierarchySelector] of titleSelectors) {
         const bubbleNode = namespacedRef.closest(bubbleSelector)
@@ -102,6 +91,16 @@ function findContainerTitleForRef(
 
 
 function createReferencesObserver(boundSelectors) {
+function getBoundInfoFor(node: HTMLElement): BoundInfo | null {
+    for (const boundSelector of Object.keys(boundSelectors)) {
+        if (!node.closest(boundSelector))
+            continue
+        return boundSelectors[boundSelector]
+    }
+    return null
+}
+
+function createReferencesObserver() {
     function onMouseAction(event: Event) {
         const ref = (event.target as Node).parentElement
         if (!ref)
@@ -113,9 +112,9 @@ function createReferencesObserver(boundSelectors) {
             changeText(ref, {toOrig: false})
     }
 
-    function main(node: HTMLElement, boundInfo: Array<[string, string[][]]>) {
-        for (const [refsSelectors, titleSelectors] of boundInfo) {
-            for (const namespacedRef_ of node.querySelectorAll(refsSelectors)) {
+    function main(node: HTMLElement, boundInfo: BoundInfo) {
+        for (const [refsSelector, titleSelectors] of boundInfo) {
+            for (const namespacedRef_ of node.querySelectorAll(refsSelector)) {
                 const namespacedRef = namespacedRef_ as HTMLElement
 
                 // skipping already abbreviated refs
@@ -184,15 +183,9 @@ function createReferencesObserver(boundSelectors) {
 
                 debug('Check:', {node})
 
-                let boundInfo = null
-                for (const boundSelector of Object.keys(boundSelectors)) {
-                    // skipping nodes upper than monitored one
-                    // required due to: observer need to be attached to existed at the application start nodes
-                    if (!node.closest(boundSelector))
-                        continue
-                    boundInfo = boundSelectors[boundSelector]
-                    break
-                }
+                // skipping nodes upper than monitored one
+                // required due to: observer need to be attached to existed at the application start nodes
+                const boundInfo = getBoundInfoFor(node)
                 if (!boundInfo)
                     continue
 
@@ -212,7 +205,10 @@ const refsInBreadcrumbsSelectors = ['.breadcrumb span.inline-wrap > span.page-re
 
 const prefixSelectors = (prefix, selectors) => selectors.map((s) => prefix + ' ' + s).join(', ')
 
-const boundSelectors = {
+type TitleSelectors = Array<[string, string, string?]>
+type BoundInfo = Array<[string, TitleSelectors, boolean?]>
+type BoundSelectors = {[boundSelector: string]: BoundInfo}
+const boundSelectors: BoundSelectors = {
     '.cp__sidebar-main-content': [  // page content
         // pages tagged with
         [prefixSelectors('div.references.page-tags', refsSelectors), [
@@ -283,7 +279,7 @@ function resetReferences() {
 
 
 export function referencesShortenerService() {
-    const observer = createReferencesObserver(boundSelectors)
+    const observer = createReferencesObserver()
     const api = {
         start: () => {
             const container = top!.document.querySelector('#app-container')!

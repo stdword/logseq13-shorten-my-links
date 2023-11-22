@@ -16,20 +16,26 @@ const main = () => {
     })
 
     logseq.Editor.registerSlashCommand('Create ref to ./sub-page', async (e) => {
-        const page = (await logseq.Editor.getCurrentPage())!
-        const prefix = page.originalName
+        const block = await logseq.Editor.getCurrentBlock() as BlockEntity
+        const page = await logseq.Editor.getPage(block.page.id)
+        const title = page!.originalName
 
-        await insertContent(`[[${prefix}/]]`, { positionIndex: -3 })
+        const prefix = `${title}/`
+
+        await insertContent(`[[${prefix}]]`, { positionIndex: -3 })
     })
 
     logseq.Editor.registerSlashCommand('Create ref to ../sibling-page', async (e) => {
-        const page = (await logseq.Editor.getCurrentPage())!
-        if (page.originalName.indexOf('/') === -1) {
-            await insertContent(`[[]]`, { positionIndex: -3 })
+        const block = await logseq.Editor.getCurrentBlock() as BlockEntity
+        const page = await logseq.Editor.getPage(block.page.id)
+        const title = page!.originalName
+
+        if (title.indexOf('/') === -1) {
+            await insertContent('[[]]', { positionIndex: -3 })
             return
         }
 
-        const parts = page.originalName.split('/')
+        const parts = title.split('/')
         parts.pop()
         const prefix = parts.join('/')
 

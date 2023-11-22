@@ -237,6 +237,11 @@ const boundSelectors: BoundSelectors = {
             ['div.page', 'div.ls-page-title span.title[data-ref]', '#hierarchyLinks > a.page-ref'],  // normal page view
         ]],
 
+        // today queries section
+        [prefixSelectors('#today-queries', refsSelectors.concat(refsInBreadcrumbsSelectors)), [
+            ['div.content > div > div.lazy-visibility', 'div.content a.page-ref'],
+        ]],
+
         // scheduled & deadlines section
         [prefixSelectors('div.scheduled-or-deadlines', refsSelectors), [
             ['div.content > div > div.lazy-visibility', 'div.content a.page-ref'],
@@ -264,6 +269,11 @@ const boundSelectors: BoundSelectors = {
     ],
 
     '#right-sidebar': [  // right sidebar
+        // custom queries section
+        [prefixSelectors('div.custom-query-results', refsSelectors.concat(refsInBreadcrumbsSelectors)), [
+            ['div.content > div > div.lazy-visibility', 'div.content a.page-ref'],
+        ]],
+
         // pages tagged with
         [prefixSelectors('div.references.page-tags', refsSelectors), [
             ['div.sidebar-item', 'div.page-title > span.text-ellipsis'],

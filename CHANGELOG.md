@@ -1,3 +1,14 @@
+# [1.2.0](https://github.com/stdword/logseq13-shorten-my-links/compare/v1.1.1...v1.2.0) (2023-11-22)
+
+
+### Features
+
+* **/-commands:** a fast way to insert reference to sub-page or sibling-page ([8e8ba14](https://github.com/stdword/logseq13-shorten-my-links/commit/8e8ba143a78d51b0134f21a0026e9725a16a9629))
+* **/-commands:** add context-aware logic for getting page name ([c6ff9d1](https://github.com/stdword/logseq13-shorten-my-links/commit/c6ff9d12f1c2b52137fc14477ec8380b84d0c035))
+* **notifications:** add notification about new /-commands ([d00c3f5](https://github.com/stdword/logseq13-shorten-my-links/commit/d00c3f52a4ab872890f108f086669a3df407c74e))
+* scheduled & deadlines section support ([2f318f0](https://github.com/stdword/logseq13-shorten-my-links/commit/2f318f085d0367b25e48626a6747ce3b2ccf3c79))
+* today queries & custom queries support ([017e6fe](https://github.com/stdword/logseq13-shorten-my-links/commit/017e6fe9d7e2891ce49476373078973c584a59af))
+
 ## [1.1.1](https://github.com/stdword/logseq13-shorten-my-links/compare/v1.1.0...v1.1.1) (2023-10-13)
 
 

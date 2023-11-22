@@ -90,7 +90,29 @@ function findContainerTitleForRef(
 }
 
 
-function createReferencesObserver(boundSelectors) {
+// not used, but may be required for future
+function findEditingContainerTitle(): string | undefined {
+    const textAreaElement = privateExports._getEditingTextArea()
+    if (!textAreaElement)
+        return undefined
+
+    const boundInfo = getBoundInfoFor(textAreaElement)
+    if (!boundInfo)
+        return undefined
+
+    for (const [_, titleSelectors, editable] of boundInfo) {
+        // takes into account only editable areas on page
+        if (!editable)
+            continue
+
+        const title = findContainerTitleForRef(textAreaElement, titleSelectors)
+        if (title)
+            return title
+    }
+
+    return undefined
+}
+
 function getBoundInfoFor(node: HTMLElement): BoundInfo | null {
     for (const boundSelector of Object.keys(boundSelectors)) {
         if (!node.closest(boundSelector))

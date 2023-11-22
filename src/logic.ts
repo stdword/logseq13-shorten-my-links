@@ -237,6 +237,11 @@ const boundSelectors: BoundSelectors = {
             ['div.page', 'div.ls-page-title span.title[data-ref]', '#hierarchyLinks > a.page-ref'],  // normal page view
         ]],
 
+        // scheduled & deadlines section
+        [prefixSelectors('div.scheduled-or-deadlines', refsSelectors), [
+            ['div.content > div > div.lazy-visibility', 'div.content a.page-ref'],
+        ]],
+
         // linked references section
         [prefixSelectors('div.references.page-linked div.foldable-title', refsSelectors), [
             ['div.page', 'div.ls-page-title span.title[data-ref]', '#hierarchyLinks > a.page-ref'],  // normal page view
@@ -262,6 +267,11 @@ const boundSelectors: BoundSelectors = {
         // pages tagged with
         [prefixSelectors('div.references.page-tags', refsSelectors), [
             ['div.sidebar-item', 'div.page-title > span.text-ellipsis'],
+        ]],
+
+        // scheduled & deadlines section
+        [prefixSelectors('div.scheduled-or-deadlines', refsSelectors), [
+            ['div.content > div > div.lazy-visibility', 'div.content a.page-ref'],
         ]],
 
         // linked references section

@@ -58,7 +58,7 @@ Just type-in <kbd>/.</kbd> to use one of two special `/`-commands:
 
 ## Installation
 ### From Logseq Marketplace (recommended way):
-<span>    </span><img width="412" alt="marketplace" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d66bf172-b958-44ed-a386-92b4aec0d10d" />
+<span>    </span><img width="412px" alt="marketplace" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d66bf172-b958-44ed-a386-92b4aec0d10d" />
 
 - In Logseq: click «...» at the top of the page and open the «Plugins» section (or press `t p`)
 - Click on the «Marketplace»

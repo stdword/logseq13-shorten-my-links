@@ -16,8 +16,8 @@ Shorten My Links
 
 <div align="center">
 
-[![Version](https://img.shields.io/github/v/release/stdword/logseq13-shorten-my-links?color=5895C9)](https://github.com/stdword/logseq13-shorten-my-links/releases)
-[![Downloads](https://img.shields.io/github/downloads/stdword/logseq13-shorten-my-links/total.svg?color=D25584)](https://github.com/stdword/logseq13-shorten-my-links#from-logseq-marketplace-recommended-way)
+[![Version](https://img.shields.io/github/v/release/stdword/logseq13-shorten-my-links?color=a4ccff)](https://github.com/stdword/logseq13-shorten-my-links/releases)
+[![Downloads](https://img.shields.io/github/downloads/stdword/logseq13-shorten-my-links/total.svg?color=b3e59f)](https://github.com/stdword/logseq13-shorten-my-links#from-logseq-marketplace-recommended-way)
 
 </div>
 

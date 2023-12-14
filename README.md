@@ -68,24 +68,26 @@ Just type-in <kbd>/.</kbd> to use one of two special `/`-commands:
 ### Manual way (in case of any troubles with recommended way)
 1. *In Logseq*: Enable «Developer mode» in «...» → Settings → Advanced
 2. Download the <u>latest</u> plugin release in a raw .zip archive from [here](https://github.com/stdword/logseq13-shorten-my-links/releases)
-   
-   <img width="250px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d0e48456-a1e3-4367-8e63-d143c6ada030"/>
-4. Unzip it
+
+ <img width="250px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d0e48456-a1e3-4367-8e63-d143c6ada030"/>
+
+3. Unzip it
 5. *In Logseq*: Go to the «...» → Plugins, click «Load unpacked plugin» and point to the unzipped plugin folder
 
-   <img width="600px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/4b97b0f7-0364-423a-bfe5-8566863e0294"/>
-6. ⚠️ The important point here is: every new plugin release should be updated manually
+ <img width="600px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/4b97b0f7-0364-423a-bfe5-8566863e0294"/>
+
+5. ⚠️ The important point here is: every new plugin release should be updated manually
 
 ## FAQ
 ### Plugin doesn't work. How to fix? Reinstall the plugin manually:
 1. In Logseq: Open the plugins page (press `t p`)
 2. In Logseq: Open plugin **text** settings
 
-   <img width="400px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/5503c3aa-d197-435d-bb18-a5f5c26e2ff8"/>
+ <img width="400px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/5503c3aa-d197-435d-bb18-a5f5c26e2ff8"/>
 
 3. In text editor: Change disabled state from *«false»* to *«true»* and save
 
-   <img width="400px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/cd0bf6af-ccde-48ab-8bd8-cbcc02dda2f3"/>
+ <img width="400px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/cd0bf6af-ccde-48ab-8bd8-cbcc02dda2f3"/>
 
 4. Restart Logseq
 5. In Logseq: Open plugins page again (`t p`)

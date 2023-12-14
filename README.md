@@ -43,7 +43,7 @@ And the more practical one:
 These references have the **same prefix as the *embedded* page title**, so it has been truncated.
 Embedded page header truncated in comparison with current page title.
 
-## 2) To have a very fast way of creating or referencing sub pages
+## 2) To have a very fast way of referencing sub pages
 Just type-in <kbd>/.</kbd> to use one of two special `/`-commands:
 
 <img width="500px" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/b84a697a-a136-43b9-a2ca-a0f036fb85b6"/>

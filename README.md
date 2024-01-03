@@ -56,6 +56,7 @@ Just type-in <kbd>/.</kbd> to use one of two special `/`-commands:
   </a>
 </p>
 
+
 ## Installation
 ### From Logseq Marketplace (recommended way):
 <span>    </span><img width="412px" alt="marketplace" src="https://github.com/stdword/logseq13-shorten-my-links/assets/1984175/d66bf172-b958-44ed-a386-92b4aec0d10d" />
@@ -78,7 +79,11 @@ Just type-in <kbd>/.</kbd> to use one of two special `/`-commands:
 
 5. ⚠️ The important point here is: every new plugin release should be updated manually
 
+
 ## FAQ
+
+> ❗️ Some parts of this plugin heavily rely on Logseq's Document Object Model (DOM) structure. This means that every Logseq update could potentially break specific plugin functions. If you notice anything unusual, please create an issue with details.
+
 ### Plugin doesn't work. How to fix? Reinstall the plugin manually:
 1. In Logseq: Open the plugins page (press `t p`)
 2. In Logseq: Open plugin **text** settings
@@ -94,15 +99,18 @@ Just type-in <kbd>/.</kbd> to use one of two special `/`-commands:
 6. Uninstall the plugin
 7. Install the plugin again from Marketplace
 
+
 ## Integrated with plugins:
 - [Awesome Links](https://github.com/yoyurec/logseq-awesome-links)
 - [Page-tags and Hierarchy](https://github.com/YU000jp/logseq-page-tags-and-hierarchy)
+
 
 ## Credits
 - [Logseq Namespace Abbreviator script](https://github.com/Bad3r/logseq-scripts/blob/main/LogseqNamespaceAbbreviator.js) by Bad3r
 - [Page icon abbreviations script](https://gist.github.com/ThinkSalat/b1548d31e87384f960289142223f9853) by ThinkSalat
 - Namespace prefixes collapser script from [Logseq Custom Files](https://github.com/cannibalox/logseq-custom-files) by cannibalox
 - Icon created by <a href="https://www.flaticon.com/free-icon/link_3093852" title="Flaticon">Freepik</a>
+
 
 ## License
 [MIT License](https://github.com/stdword/logseq13-shorten-my-links/blob/main/LICENSE)
